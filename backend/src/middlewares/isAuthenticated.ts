@@ -18,7 +18,7 @@ export function isAuthenticated(
         return res.status(401).end();
     }
 
-    //ignora o primeiro item 'Bearer' e pega só a string depois do espaço que é o TOKEN
+    //ignora o primeiro item 'Bearer' e mostra só a string depois do espaço que é o TOKEN
     const [, token] = authToken.split(" ")
 
     try {
@@ -28,11 +28,14 @@ export function isAuthenticated(
             process.env.JWT_SECRET
         ) as Payload; //o dado que vai ser devolvido será do tipo Payload
 
+        //Recuperar o id do token e colocar dentro de uma variável user_id dentro do req
+        req.user_id = sub;
+
         return next();
 
     } catch (err) {
-        //Token não batendo com o token do usuário
+        //Se o Token não bater com o token do usuário
         return res.status(401).end();
     }
-    console.log(token);
+
 }
