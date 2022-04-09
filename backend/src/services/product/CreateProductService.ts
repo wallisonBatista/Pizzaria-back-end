@@ -17,7 +17,7 @@ class CreateProductService {
                 price: price,
                 description: description,
                 banner: banner,
-                categoryId: category_id
+                category_id: category_id
             }
         })
         return product

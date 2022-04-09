@@ -45,9 +45,9 @@ model Product {
   updated_at  DateTime? @default(now())
 
 
-  Category   Category? @relation(fields: [categoryId], references: [id])
-  categoryId String?
-  items      Item[]
+  Category    Category? @relation(fields: [category_id], references: [id])
+  category_id String?
+  items       Item[]
   @@map("products")
 }
 
@@ -72,10 +72,10 @@ model Item {
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  Order   Order?  @relation(fields: [orderId], references: [id])
-  orderId String?
+  Order    Order?  @relation(fields: [order_id], references: [id])
+  order_id String?
 
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId String?
+  Product    Product? @relation(fields: [product_id], references: [id])
+  product_id String?
   @@map("items")
 }
