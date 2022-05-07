@@ -39,6 +39,7 @@ class AuthUserService {
             process.env.JWT_SECRET,
             {
                 subject: user.id,
+                //Define o tempo do token 30ms, 30d, 30s, 30h, 30m
                 expiresIn: '30d'
             }
         )
